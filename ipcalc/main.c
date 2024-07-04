@@ -27,25 +27,27 @@ int get_line_n(char *array, int max) {
 
 
 int main() {
-    char input[100];
-    printf("Enter ip:");
-    int length = get_line_n(input, sizeof(input));
-    if (length < 0) {
-        printf("Error reading input.\n");
-    } else {
-        printf("Input: %s\n", input);
-        char ip[40];
-        int prefix;
-        if (sscanf(input, "%39[^/]/%d", ip, &prefix) == 2) {
-            printf("IP: %s\n", ip);
-            printf("Prefix: %d\n", prefix);
-            handle_ip_with_cidr(ip);
-        } else if (sscanf(input, "%39[^/]", ip) == 1) {
-            printf("IP: %s\n", ip);
-            handle_ip_with_cidr(ip);
+    while(1) {
+        char input[100];
+        printf("Enter ip or number:");
+        int length = get_line_n(input, sizeof(input));
+        if (length < 0) {
+            printf("Error reading input.\n");
         } else {
-            printf("Invalid IP/CIDR format.\n");
+            printf("\nInput: %s\n", input);
+            char ip[40];
+            int prefix;
+            if (sscanf(input, "%39[^/]/%d", ip, &prefix) == 2) {
+                printf("Prefix: %d\n", prefix);
+                handle_ip_with_cidr(ip);
+
+            } else if (sscanf(input, "%39[^/]", ip) == 1) {
+                handle_ip_with_cidr(ip);
+            } else {
+                printf("Invalid IP/CIDR format.\n");
+            }
         }
+        printf("-----------------------------------------------------------\n");
     }
     return 0;
 }

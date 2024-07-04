@@ -10,7 +10,7 @@ void ipv4_to_hex_and_bin(const char *ip) {
         for (int j = 7; j >= 0; j--) {
             printf("%d", (bytes[i] >> j) & 1);
         }
-        if (i < 3) printf(".");
+        if (i < 3) printf(" ");
     }
     printf("\n");
 }
@@ -31,6 +31,25 @@ void ipv6_to_hex_and_bin(const char *ip) {
             printf("%d", (bytes[i] >> j) & 1);
         }
         if (i < 7) printf(":");
+    }
+    printf("\n");
+}
+
+void number_to_hex_and_bin(const char *nb) {
+    printf("Number Hex: ");
+    char *ptr;
+    const long ret = strtol(nb, &ptr, 10);
+    printf("0x%02lX ", ret);
+
+    printf("\nNumber Bin: ");
+    for (int i = 31; i >= 0; i--) {
+        const long shifted = ret >> i;
+        if (shifted != 0 || i == 0) {
+            printf("%c", (shifted&1) ? '1' : '0');
+            if (i % 8 == 0 && i != 0) {
+                printf(" ");
+            }
+        }
     }
     printf("\n");
 }
@@ -64,6 +83,6 @@ void handle_ip_with_cidr(const char *ip_with_cidr) {
         ipv6_to_hex_and_bin(ip);
         print_subnet_mask(prefix, type);
     } else {
-        printf("IP is Invalid\n");
+        number_to_hex_and_bin(ip_with_cidr);
     }
 }
