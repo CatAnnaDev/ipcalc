@@ -1,7 +1,3 @@
-//
-// Created by Anna Lambert on 04/07/2024.
-//
-
 #ifndef IPCALC_VALID_IP_H
 #define IPCALC_VALID_IP_H
 

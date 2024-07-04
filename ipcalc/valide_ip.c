@@ -1,7 +1,3 @@
-//
-// Created by Anna on 04/07/2024.
-//
-
 #include "valid_ip.h"
 
 int is_valid_ipv4(const char *ip) {

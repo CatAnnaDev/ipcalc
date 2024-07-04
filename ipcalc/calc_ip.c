@@ -1,7 +1,3 @@
-//
-// Created by Anna Lambert on 04/07/2024.
-//
-
 #include "calc_ip.h"
 
 void ipv4_to_hex_and_bin(const char *ip) {
