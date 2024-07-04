@@ -39,7 +39,7 @@ int main() {
             int prefix;
             if (sscanf(input, "%39[^/]/%d", ip, &prefix) == 2) {
                 printf("Prefix: %d\n", prefix);
-                handle_ip_with_cidr(ip);
+                handle_ip_with_cidr(input);
 
             } else if (sscanf(input, "%39[^/]", ip) == 1) {
                 handle_ip_with_cidr(ip);
